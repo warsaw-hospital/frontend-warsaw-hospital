@@ -5,10 +5,11 @@ import "./Common.css";
 const Header = () => {
 	return (
 		<AppBar
-			position='static'
+			position="static"
 			sx={{
 				display: { md: "block", xs: "none" },
-			}}>
+			}}
+		>
 			<Toolbar
 				disableGutters
 				style={{
@@ -18,7 +19,8 @@ const Header = () => {
 				}}
 				sx={{
 					padding: "0px 32px",
-				}}>
+				}}
+			>
 				<div
 					style={{
 						display: "flex",
@@ -33,8 +35,9 @@ const Header = () => {
 						alignItems: "center",
 						justifyContent: "center",
 						width: "100%",
-					}}>
-					<Typography variant='h6'>Header</Typography>
+					}}
+				>
+					<Typography variant="h6">Header</Typography>
 				</div>
 			</Toolbar>
 		</AppBar>

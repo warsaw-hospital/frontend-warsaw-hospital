@@ -10,8 +10,9 @@ const Sandbox = () => {
 				width: "100%",
 				height: "100%",
 				gap: "8px",
-			}}>
-			<Typography variant='h1'>Sandbox</Typography>
+			}}
+		>
+			<Typography variant="h1">Sandbox</Typography>
 		</div>
 	);
 };

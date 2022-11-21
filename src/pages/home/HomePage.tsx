@@ -9,8 +9,9 @@ const HomePage = () => {
 				height: "100%",
 				display: "flex",
 				flexDirection: "column",
-			}}>
-			<Typography variant='h1'>Home Page</Typography>
+			}}
+		>
+			<Typography variant="h1">Home Page</Typography>
 		</div>
 	);
 };
