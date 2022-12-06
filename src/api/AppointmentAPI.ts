@@ -1,3 +1,3 @@
-const AppointmentAPI = {}
+const AppointmentAPI = {};
 
-export default AppointmentAPI
+export default AppointmentAPI;
