@@ -1,6 +1,5 @@
 html {
 	height: 100%;
-	background-color: #ffffff;
 }
 
 body {
@@ -22,4 +21,8 @@ p {
 
 #root {
 	height: 100%;
+}
+
+* {
+	border: 1px solid limegreen;
 }

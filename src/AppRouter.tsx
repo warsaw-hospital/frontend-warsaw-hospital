@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import Header from "components/common/Header";
 import NavBar from "components/common/NavBar";
 import routes from "constants/routes";
@@ -17,21 +18,13 @@ const AppRouter = () => {
 		>
 			<NavBar />
 			<Header />
-			<div
-				style={{
-					width: "100%",
-					height: "100%",
-					padding: "0 60px",
-					display: "flex",
-					flexDirection: "column",
-				}}
-			>
+			<Box className="app-container">
 				<Routes>
 					{[...routes[0].items, ...routes[1].items].map((route: RouteItem) => (
 						<Route key={route.key} path={route.path} element={route.element} />
 					))}
 				</Routes>
-			</div>
+			</Box>
 		</div>
 	);
 };
