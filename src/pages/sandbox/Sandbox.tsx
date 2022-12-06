@@ -11,11 +11,14 @@ const Sandbox = () => {
 				gap: "8px",
 			}}
 		>
-			<Typography variant="h1"
-			style={{
-				width: "100%",
-			}}
-			>Sandbox</Typography>
+			<Typography
+				variant="h1"
+				style={{
+					width: "100%",
+				}}
+			>
+				Sandbox
+			</Typography>
 		</div>
 	);
 };

@@ -132,6 +132,18 @@ const AppTheme = createTheme({
 			main: "#FFC107",
 			contrastText: "#3A3500",
 		},
+		red: {
+			50: "#FEEBEE",
+			100: "#FECDD2",
+			200: "#EF9A9A",
+			300: "#E57373",
+			400: "#EF5350",
+			500: "#F44336",
+			600: "#E53935",
+			700: "#D32F2F",
+			800: "#C62828",
+			900: "#B71C1C",
+		},
 	},
 });
 
@@ -166,6 +178,21 @@ declare module "@mui/material/styles/createPalette" {
 
 	interface TypeTextOptions {
 		light?: PaletteOptions["primary"];
+		red?: PaletteOptions["grey"];
+	}
+	interface Palette {
+		specific: Palette["primary"];
+		neutral: Palette["primary"];
+		error: Palette["primary"];
+		red: Palette["grey"];
+	}
+
+	interface PaletteOptions {
+		specific?: PaletteOptions["primary"];
+		neutral?: PaletteOptions["primary"];
+		error?: PaletteOptions["primary"];
+		red?: PaletteOptions["grey"];
+		green?: PaletteOptions["grey"];
 	}
 
 	interface PaletteColor {
