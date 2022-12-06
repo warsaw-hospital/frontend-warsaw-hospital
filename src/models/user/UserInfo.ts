@@ -1,4 +1,4 @@
-import UserRoleResponse from "models/userrole/UserRoleResponse";
+import UserRoleResponse from "models/user/UserRoleResponse";
 
 interface UserInfo {
 	name: string;
