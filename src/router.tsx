@@ -1,39 +1,66 @@
-import React, { lazy, LazyExoticComponent, Suspense } from "react";
-import { Navigate } from "react-router-dom";
+// import { lazy, LazyExoticComponent, Suspense } from "react";
+// import SuspenseLoader from "components/common/SuspenseLoader";
 import { RouteObject } from "react-router";
+import { Navigate } from "react-router-dom";
 
-import SidebarLayout from "layouts/SidebarLayout";
-import BaseLayout from "layouts/BaseLayout";
+import BaseLayout from "layouts/BaseLayout/BaseLayout";
 
-import SuspenseLoader from "components/suspenseloader";
+import StatusComingSoon from "pages/status/ComingSoon";
+import StatusMaintenance from "pages/status/Maintenance";
+import Status404 from "pages/status/Status404";
+import Status500 from "pages/status/Status500Page";
 
-const Loader =
-	(Component: LazyExoticComponent<() => JSX.Element>) =>
-	(props: JSX.IntrinsicAttributes) =>
-		(
-			<Suspense fallback={<SuspenseLoader />}>
-				<Component {...props} />
-			</Suspense>
-		);
+// const Loader =
+// 	(Component: LazyExoticComponent<() => JSX.Element>) =>
+// 	(props: JSX.IntrinsicAttributes) =>
+// 		(
+// 			<Suspense fallback={<SuspenseLoader />}>
+// 				<Component {...props} />
+// 			</Suspense>
+// 		);
 
 // Pages
 
-const HomePage = Loader(lazy(() => import("pages/home/HomePage")));
-const SandboxPage = Loader(lazy(() => import("pages/sandbox/Sandbox")));
+// const HomePage = Loader(lazy(() => import("pages/home/HomePage")));
+// const SandboxPage = Loader(lazy(() => import("pages/sandbox/Sandbox")));
 
 const routes: RouteObject[] = [
 	{
+		// TODO: remove header from status pages
 		path: "",
 		element: <BaseLayout />,
 		children: [
 			{
-				path: "/",
-				element: <HomePage />,
+				// Status pages
+				path: "status",
+				children: [
+					{
+						path: "",
+						element: <Navigate to="/404" replace />,
+					},
+					{
+						path: "404",
+						element: <Status404 />,
+					},
+					{
+						path: "500",
+						element: <Status500 />,
+					},
+					{
+						path: "maintenance",
+						element: <StatusMaintenance />,
+					},
+					{
+						path: "coming-soon",
+						element: <StatusComingSoon />,
+					},
+				],
 			},
 			{
-				path: "overview",
-				element: <Navigate to="/" replace />,
+				path: "*",
+				element: <Status404 />,
 			},
+
 			{
 				path: "overview/home",
 				element: <Navigate to="/" replace />,
@@ -41,30 +68,6 @@ const routes: RouteObject[] = [
 					{
 						path: "overview/home",
 						element: <Navigate to="/" replace />,
-					},
-				],
-			},
-		],
-	},
-	{
-		path: "/sandbox",
-		element: <SidebarLayout />,
-		children: [
-			{
-				path: "sandbox",
-				element: <SandboxPage />,
-			},
-			{
-				path: "overview/sandbox",
-				element: <Navigate to="/sandbox" replace />,
-			},
-			{
-				path: "overview/sandbox/sandbox",
-				element: <Navigate to="/sandbox" replace />,
-				children: [
-					{
-						path: "overview/sandbox/sandbox",
-						element: <Navigate to="/sandbox" replace />,
 					},
 				],
 			},
