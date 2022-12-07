@@ -3,7 +3,6 @@ import AuthAPI from "api/AuthAPI";
 import { Formik, FormikProps } from "formik";
 import { useEffect, useRef, useState } from "react";
 import * as yup from "yup";
-
 import LoginRequest from "models/auth/LoginRequest";
 import FormTextField from "../form/FormTextField";
 import ReadableHiddenPasswordField from "../form/ReadableHiddenPasswordField";
@@ -13,7 +12,8 @@ const LoginThroughPasswordForm = () => {
 	const [loggedIn, setLoggedIn] = useState<boolean | undefined>(undefined);
 
 	const handleSimpleLogin = async (request: LoginRequest) => {
-		setLoggedIn(await AuthAPI.login(request));
+		let response = await AuthAPI.login(request);
+		setLoggedIn(response);
 	};
 
 	useEffect(() => {
@@ -60,6 +60,7 @@ const LoginThroughPasswordForm = () => {
 						inputRef={ref}
 						name={"password"}
 						enableEnterSubmit={true}
+						variant="outlined"
 						enterSubmitAction={() => formik.handleSubmit()}
 						className={"login-input"}
 					/>

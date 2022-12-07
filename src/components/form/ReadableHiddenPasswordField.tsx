@@ -2,9 +2,9 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
-import FormTextField from "./FormTextField";
+import FormTextField, { FormTextFieldProps } from "./FormTextField";
 
-interface ReadableHiddenPasswordFieldProps {
+interface ReadableHiddenPasswordFieldProps extends FormTextFieldProps {
 	title?: string;
 	autoComplete?: string;
 	name: string;

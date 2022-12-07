@@ -15,7 +15,7 @@ import { FieldHookConfig, useField } from "formik";
 
 import "./FormComponents.css";
 
-interface OtherProps extends OutlinedTextFieldProps {
+export interface FormTextFieldProps extends OutlinedTextFieldProps {
 	title?: string;
 	titleInfoIconLabel?: string;
 	titleButtonLabel?: string;
@@ -33,7 +33,7 @@ interface OtherProps extends OutlinedTextFieldProps {
 	enterSubmitAction?: () => void;
 }
 
-function FormTextField(props: OtherProps & FieldHookConfig<string>) {
+function FormTextField(props: FormTextFieldProps & FieldHookConfig<string>) {
 	const {
 		startIcon,
 		endIcon,
