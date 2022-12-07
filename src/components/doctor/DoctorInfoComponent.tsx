@@ -19,7 +19,7 @@ const DoctorInfoComponent = (props: DoctorInfoComponentProps) => {
 			</div>
 			<div className="doctor-name-and-specialty-container">
 				<Typography variant="h4">Dr. John Doe</Typography>
-				<Typography variant="body">Specialty: General Practitioner</Typography>
+				<Typography variant="body1">Specialty: General Practitioner</Typography>
 			</div>
 			<div className="button-container">
 				<Button

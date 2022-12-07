@@ -1,27 +1,26 @@
-import { ThemeProvider } from "@emotion/react";
-import ReactDOM from "react-dom/client";
+import AppRouter from "AppRouter";
+import { SidebarProvider } from "contexts/SidebarContext";
+import "nprogress/nprogress.css";
+
+import ReactDOM from "react-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter } from "react-router-dom";
 import setupAxiosInterceptors from "redux/setupAxiosInterceptors";
-import AppRouter from "./AppRouter";
-import AppTheme from "./AppTheme";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
+import ThemeProviderWrapper from "theme/ThemeProvider";
 
-const root = ReactDOM.createRoot(
-	document.getElementById("root") as HTMLElement
-);
+import "./index.css";
 
 setupAxiosInterceptors();
 
-root.render(
-	<BrowserRouter>
-		<ThemeProvider theme={AppTheme}>
-			<AppRouter />
-		</ThemeProvider>
-	</BrowserRouter>
+ReactDOM.render(
+	<HelmetProvider>
+		<SidebarProvider>
+			<BrowserRouter>
+				<ThemeProviderWrapper>
+					<AppRouter />
+				</ThemeProviderWrapper>
+			</BrowserRouter>
+		</SidebarProvider>
+	</HelmetProvider>,
+	document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

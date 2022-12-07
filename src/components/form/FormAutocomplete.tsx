@@ -12,7 +12,7 @@ import {
 	Typography,
 	TypographyProps,
 } from "@mui/material";
-import AppTheme from "AppTheme";
+import AppTheme from "theme/AppTheme";
 import { FieldHookConfig, useField, useFormikContext } from "formik";
 import { useState } from "react";
 
@@ -87,7 +87,7 @@ function FormAutocomplete(prop: OtherProps & FieldHookConfig<string>) {
 			)}
 			<Autocomplete
 				open={open}
-				value={value ? value : field.value}
+				value={value}
 				disableClearable={disableClearable}
 				disabled={disabled}
 				key={field.name}
@@ -158,7 +158,7 @@ function FormAutocomplete(prop: OtherProps & FieldHookConfig<string>) {
 										padding: "0px",
 									}}
 								>
-									<Typography variant="body">{option}</Typography>
+									<Typography variant="body1">{option}</Typography>
 								</ListItemText>
 							</Box>
 						) : null}
@@ -183,8 +183,8 @@ function FormAutocomplete(prop: OtherProps & FieldHookConfig<string>) {
 					<ErrorRoundedIcon className="textfield-error-icon" />
 
 					<Typography
-						variant="subtitle"
-						color={AppTheme.palette.red[800]}
+						variant="subtitle2"
+						color={AppTheme.palette.error.main}
 						align="left"
 						{...other.errorprops}
 					>
@@ -194,7 +194,7 @@ function FormAutocomplete(prop: OtherProps & FieldHookConfig<string>) {
 			)}
 			{description && (
 				<Typography
-					variant="subtitle"
+					variant="subtitle2"
 					align="left"
 					color={AppTheme.palette.grey[700]}
 					{...other.descriptionprops}

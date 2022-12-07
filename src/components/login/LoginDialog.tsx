@@ -1,6 +1,6 @@
 import { ArrowBackIosNew } from "@mui/icons-material";
 import { Button, Dialog, Typography } from "@mui/material";
-import AppTheme from "AppTheme";
+import AppTheme from "theme/AppTheme";
 import { useRef } from "react";
 import LoginThroughPasswordForm from "./LoginThroughPasswordForm";
 

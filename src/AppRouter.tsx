@@ -1,31 +1,20 @@
-import { Box } from "@mui/material";
-import Header from "components/common/Header";
+import { CssBaseline } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import NavBar from "components/common/NavBar";
-import routes from "constants/routes";
-import RouteItem from "models/routes/RouteItem";
-import { Route, Routes } from "react-router-dom";
+
+import { useRoutes } from "react-router-dom";
+import router from "router";
 import "./AppRouter.css";
 
 const AppRouter = () => {
+	const content = useRoutes(router);
 	return (
-		<div
-			style={{
-				width: "100%",
-				height: "100%",
-				display: "flex",
-				flexDirection: "column",
-			}}
-		>
+		<LocalizationProvider dateAdapter={AdapterMoment}>
+			<CssBaseline />
 			<NavBar />
-			<Header />
-			<Box className="app-container">
-				<Routes>
-					{[...routes[0].items, ...routes[1].items].map((route: RouteItem) => (
-						<Route key={route.key} path={route.path} element={route.element} />
-					))}
-				</Routes>
-			</Box>
-		</div>
+			{content}
+		</LocalizationProvider>
 	);
 };
 

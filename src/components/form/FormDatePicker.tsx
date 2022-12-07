@@ -17,7 +17,7 @@ import {
 	PickersDayProps,
 } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import AppTheme from "AppTheme";
+import AppTheme from "theme/AppTheme";
 import InputClearButton from "components/button/InputClearButton";
 import { lt } from "date-fns/locale";
 import { FieldHookConfig, useField, useFormikContext } from "formik";
@@ -162,8 +162,8 @@ const FormDatePicker = (
 					<ErrorRoundedIcon className="textfield-error-icon" />
 
 					<Typography
-						variant="subtitle"
-						color={AppTheme.palette.red[800]}
+						variant="subtitle2"
+						color={AppTheme.palette.error.main}
 						align="left"
 						{...props.errorprops}
 					>
@@ -173,7 +173,7 @@ const FormDatePicker = (
 			)}
 			{props.description && (
 				<Typography
-					variant="subtitle"
+					variant="subtitle2"
 					align="left"
 					color={AppTheme.palette.grey[700]}
 					{...props.descriptionprops}

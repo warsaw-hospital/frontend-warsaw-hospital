@@ -10,7 +10,7 @@ import {
 	Typography,
 	TypographyProps,
 } from "@mui/material";
-import AppTheme from "AppTheme";
+import AppTheme from "theme/AppTheme";
 import { FieldHookConfig, useField } from "formik";
 
 import "./FormComponents.css";
@@ -113,8 +113,8 @@ function FormTextField(props: FormTextFieldProps & FieldHookConfig<string>) {
 					<ErrorRoundedIcon className="textfield-error-icon" />
 
 					<Typography
-						variant="subtitle"
-						color={AppTheme.palette.red[800]}
+						variant="subtitle2"
+						color={AppTheme.palette.error.main}
 						align="left"
 						{...other.errorprops}
 					>
@@ -124,7 +124,7 @@ function FormTextField(props: FormTextFieldProps & FieldHookConfig<string>) {
 			)}
 			{description && (
 				<Typography
-					variant="subtitle"
+					variant="subtitle2"
 					align="left"
 					color={AppTheme.palette.grey[700]}
 					{...other.descriptionprops}
