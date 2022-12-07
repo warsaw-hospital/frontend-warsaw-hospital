@@ -6,13 +6,19 @@ const Sandbox = () => {
 			style={{
 				display: "flex",
 				flexDirection: "column",
-				padding: "24px",
 				width: "100%",
 				height: "100%",
 				gap: "8px",
 			}}
 		>
-			<Typography variant="h1">Sandbox</Typography>
+			<Typography
+				variant="h1"
+				style={{
+					width: "100%",
+				}}
+			>
+				Sandbox
+			</Typography>
 		</div>
 	);
 };
