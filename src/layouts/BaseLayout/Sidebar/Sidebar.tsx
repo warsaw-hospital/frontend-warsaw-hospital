@@ -29,7 +29,7 @@ const SidebarWrapper = styled(Box)(
 );
 
 const Sidebar = () => {
-	const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
+	const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
 	const closeSidebar = () => toggleSidebar();
 	const theme = useTheme();
 
@@ -81,7 +81,7 @@ const Sidebar = () => {
 					boxShadow: `${theme.sidebar.boxShadow}`,
 				}}
 				anchor={theme.direction === "rtl" ? "right" : "left"}
-				open={sidebarToggle}
+				open={isSidebarOpen}
 				onClose={closeSidebar}
 				variant="temporary"
 				elevation={9}

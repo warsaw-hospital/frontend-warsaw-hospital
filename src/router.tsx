@@ -1,28 +1,12 @@
-// import { lazy, LazyExoticComponent, Suspense } from "react";
-// import SuspenseLoader from "components/common/SuspenseLoader";
 import { RouteObject } from "react-router";
 import { Navigate } from "react-router-dom";
 
 import BaseLayout from "layouts/BaseLayout/BaseLayout";
 
-import StatusComingSoon from "pages/status/ComingSoon";
-import StatusMaintenance from "pages/status/Maintenance";
-import Status404 from "pages/status/Status404";
+import StatusComingSoon from "pages/status/ComingSoonPage";
+import StatusMaintenance from "pages/status/MaintenancePage";
+import Status404 from "pages/status/Status404Page";
 import Status500 from "pages/status/Status500Page";
-
-// const Loader =
-// 	(Component: LazyExoticComponent<() => JSX.Element>) =>
-// 	(props: JSX.IntrinsicAttributes) =>
-// 		(
-// 			<Suspense fallback={<SuspenseLoader />}>
-// 				<Component {...props} />
-// 			</Suspense>
-// 		);
-
-// Pages
-
-// const HomePage = Loader(lazy(() => import("pages/home/HomePage")));
-// const SandboxPage = Loader(lazy(() => import("pages/sandbox/Sandbox")));
 
 const routes: RouteObject[] = [
 	{

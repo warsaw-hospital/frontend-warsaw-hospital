@@ -14,7 +14,6 @@ import {
 	useTheme,
 } from "@mui/material";
 
-import Logo from "components/logosign";
 import SidebarMenu from "./SidebarMenu";
 
 const SidebarWrapper = styled(Box)(
@@ -30,7 +29,7 @@ const SidebarWrapper = styled(Box)(
 );
 
 function Sidebar() {
-	const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
+	const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
 	const closeSidebar = () => toggleSidebar();
 	const theme = useTheme();
 
@@ -60,9 +59,7 @@ function Sidebar() {
 							sx={{
 								width: 52,
 							}}
-						>
-							<Logo />
-						</Box>
+						></Box>
 					</Box>
 					<Divider
 						sx={{
@@ -97,7 +94,7 @@ function Sidebar() {
 					boxShadow: `${theme.sidebar.boxShadow}`,
 				}}
 				anchor={theme.direction === "rtl" ? "right" : "left"}
-				open={sidebarToggle}
+				open={isSidebarOpen}
 				onClose={closeSidebar}
 				variant="temporary"
 				elevation={9}
@@ -117,9 +114,7 @@ function Sidebar() {
 								sx={{
 									width: 52,
 								}}
-							>
-								<Logo />
-							</Box>
+							></Box>
 						</Box>
 						<Divider
 							sx={{

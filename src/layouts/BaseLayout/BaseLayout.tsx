@@ -12,6 +12,7 @@ interface BaseLayoutProps {
 
 const BaseLayout = (props: BaseLayoutProps) => {
 	const { children } = props;
+
 	const theme = useTheme();
 	return (
 		<Box

@@ -19,7 +19,7 @@ import { styled } from "@mui/material/styles";
 import { TransitionProps } from "@mui/material/transitions";
 import SearchResultItem, {
 	SearchResultItemValue,
-} from "components/common/SearchResultItem";
+} from "components/search/SearchResultItem";
 import { ChangeEvent, forwardRef, ReactElement, Ref, useState } from "react";
 
 const HeaderSearch = () => {

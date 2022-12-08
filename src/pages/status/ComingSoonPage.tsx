@@ -13,7 +13,7 @@ import {
 	FormHelperText,
 } from "@mui/material";
 import { Helmet } from "react-helmet-async";
-import Logo from "components/logosign";
+
 
 import { styled } from "@mui/material/styles";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -21,43 +21,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import MailTwoToneIcon from "@mui/icons-material/MailTwoTone";
 
-const MainContent = styled(Box)(
-	() => `
-    height: 100%;
-    display: flex;
-    flex: 1;
-    overflow: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`
-);
-
-const TypographyH1 = styled(Typography)(
-	({ theme }) => `
-  font-size: ${theme.typography.pxToRem(75)};
-`
-);
-
-const TypographyH3 = styled(Typography)(
-	({ theme }) => `
-  color: ${theme.colors.alpha.black[50]};
-`
-);
-
-const OutlinedInputWrapper = styled(OutlinedInput)(
-	({ theme }) => `
-    background-color: ${theme.colors.alpha.white[100]};
-`
-);
-
-const ButtonNotify = styled(Button)(
-	({ theme }) => `
-    margin-right: -${theme.spacing(1)};
-`
-);
-
-function StatusComingSoon() {
+const StatusComingSoon = () => {
 	const calculateTimeLeft = () => {
 		const difference = +new Date(`2023`) - +new Date();
 		let timeLeft = {};
@@ -104,7 +68,6 @@ function StatusComingSoon() {
 			</Helmet>
 			<MainContent>
 				<Container maxWidth="md">
-					<Logo />
 					<Box textAlign="center" mb={3}>
 						<Container maxWidth="xs">
 							<Typography variant="h1" sx={{ mt: 4, mb: 2 }}>
@@ -178,6 +141,42 @@ function StatusComingSoon() {
 			</MainContent>
 		</>
 	);
-}
+};
+
+const MainContent = styled(Box)(
+	() => `
+    height: 100%;
+    display: flex;
+    flex: 1;
+    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+);
+
+const TypographyH1 = styled(Typography)(
+	({ theme }) => `
+  font-size: ${theme.typography.pxToRem(75)};
+`
+);
+
+const TypographyH3 = styled(Typography)(
+	({ theme }) => `
+  color: ${theme.colors.alpha.black[50]};
+`
+);
+
+const OutlinedInputWrapper = styled(OutlinedInput)(
+	({ theme }) => `
+    background-color: ${theme.colors.alpha.white[100]};
+`
+);
+
+const ButtonNotify = styled(Button)(
+	({ theme }) => `
+    margin-right: -${theme.spacing(1)};
+`
+);
 
 export default StatusComingSoon;

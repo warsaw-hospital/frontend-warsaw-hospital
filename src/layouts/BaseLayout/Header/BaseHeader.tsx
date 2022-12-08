@@ -1,26 +1,23 @@
 import { useContext } from "react";
 
+import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
+import MenuTwoToneIcon from "@mui/icons-material/MenuTwoTone";
 import {
-	Box,
 	alpha,
-	Stack,
-	lighten,
-	Divider,
+	Box,
 	IconButton,
-	Tooltip,
+	lighten,
 	styled,
+	Tooltip,
 	useTheme,
 } from "@mui/material";
-import MenuTwoToneIcon from "@mui/icons-material/MenuTwoTone";
 import { SidebarContext } from "contexts/SidebarContext";
-import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
 
 import HeaderButtons from "./HeaderButtons";
 import HeaderUserbox from "./HeaderUserBox";
-import HeaderMenu from "./Menu";
 
 const BaseHeader = () => {
-	const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
+	const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
 	const theme = useTheme();
 
 	return (
@@ -52,21 +49,13 @@ const BaseHeader = () => {
 			>
 				<Tooltip arrow title="Toggle Menu">
 					<IconButton color="primary" onClick={toggleSidebar}>
-						{!sidebarToggle ? (
+						{!isSidebarOpen ? (
 							<MenuTwoToneIcon fontSize="small" />
 						) : (
 							<CloseTwoToneIcon fontSize="small" />
 						)}
 					</IconButton>
 				</Tooltip>
-				{/* <Stack
-				direction="row"
-				divider={<Divider orientation="vertical" flexItem />}
-				alignItems="center"
-				spacing={2}
-			>
-				<HeaderMenu />
-			</Stack> */}
 			</div>
 			<Box
 				style={{

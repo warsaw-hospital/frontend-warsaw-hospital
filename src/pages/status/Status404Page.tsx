@@ -14,30 +14,6 @@ import SearchTwoToneIcon from "@mui/icons-material/SearchTwoTone";
 
 import { styled } from "@mui/material/styles";
 
-const MainContent = styled(Box)(
-	({ theme }) => `
-    height: 100%;
-    display: flex;
-    flex: 1;
-    overflow: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`
-);
-
-const OutlinedInputWrapper = styled(OutlinedInput)(
-	({ theme }) => `
-    background-color: ${theme.colors.alpha.white[100]};
-`
-);
-
-const ButtonSearch = styled(Button)(
-	({ theme }) => `
-    margin-right: -${theme.spacing(1)};
-`
-);
-
 function Status404() {
 	return (
 		<>
@@ -92,5 +68,29 @@ function Status404() {
 		</>
 	);
 }
+
+const MainContent = styled(Box)(
+	({ theme }) => `
+    height: 100%;
+    display: flex;
+    flex: 1;
+    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+);
+
+const OutlinedInputWrapper = styled(OutlinedInput)(
+	({ theme }) => `
+    background-color: ${theme.colors.alpha.white[100]};
+`
+);
+
+const ButtonSearch = styled(Button)(
+	({ theme }) => `
+    margin-right: -${theme.spacing(1)};
+`
+);
 
 export default Status404;
