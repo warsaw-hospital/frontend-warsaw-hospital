@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 
 // import Logo from "components/logosign";
-import SidebarMenu from "./SidebarMenu";
+import SidebarMenu from "./BaseSidebarMenu";
 
 const SidebarWrapper = styled(Box)(
 	({ theme }) => `
@@ -29,7 +29,7 @@ const SidebarWrapper = styled(Box)(
 );
 
 const Sidebar = () => {
-	const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
+	const { isSidebarOpen = false, toggleSidebar } = useContext(SidebarContext);
 	const closeSidebar = () => toggleSidebar();
 	const theme = useTheme();
 

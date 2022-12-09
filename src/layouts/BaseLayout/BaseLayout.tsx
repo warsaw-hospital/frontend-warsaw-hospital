@@ -4,7 +4,8 @@ import { Outlet } from "react-router-dom";
 
 import { alpha, Box, lighten, useTheme } from "@mui/material";
 import BaseHeader from "./Header/BaseHeader";
-import Sidebar from "./Sidebar/Sidebar";
+import BaseSidebar from "./Sidebar/BaseSidebar";
+import { SidebarContext } from "contexts/SidebarContext";
 
 interface BaseLayoutProps {
 	children?: ReactNode;
@@ -12,6 +13,7 @@ interface BaseLayoutProps {
 
 const BaseLayout = (props: BaseLayoutProps) => {
 	const { children } = props;
+	const { isSidebarOpen = false } = SidebarContext;
 
 	const theme = useTheme();
 	return (
@@ -43,7 +45,8 @@ const BaseLayout = (props: BaseLayoutProps) => {
 			}}
 		>
 			<BaseHeader />
-			<Sidebar />
+			{isSidebarOpen && <BaseSidebar />}
+
 			<Box
 				sx={{
 					position: "relative",
@@ -56,7 +59,7 @@ const BaseLayout = (props: BaseLayoutProps) => {
 					},
 				}}
 			>
-				<Box display="block">{children || <Outlet />}</Box>
+				<Box display="block">{ children||<Outlet />}</Box>
 			</Box>
 		</Box>
 	);

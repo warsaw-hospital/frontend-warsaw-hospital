@@ -17,7 +17,7 @@ import HeaderButtons from "./HeaderButtons";
 import HeaderUserbox from "./HeaderUserBox";
 
 const BaseHeader = () => {
-	const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
+	const { isSidebarOpen = false, toggleSidebar } = useContext(SidebarContext);
 	const theme = useTheme();
 
 	return (
