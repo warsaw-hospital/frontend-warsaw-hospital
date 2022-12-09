@@ -2,18 +2,8 @@ import Scrollbar from "components/scrollbar";
 import { SidebarContext } from "contexts/SidebarContext";
 import { useContext } from "react";
 
-import {
-	alpha,
-	Box,
-	darken,
-	Divider,
-	Drawer,
-	lighten,
-	styled,
-	useTheme,
-} from "@mui/material";
+import { Box, darken, Divider, Drawer, styled, useTheme } from "@mui/material";
 
-// import Logo from "components/logosign";
 import SidebarMenu from "./BaseSidebarMenu";
 
 const SidebarWrapper = styled(Box)(
@@ -35,47 +25,7 @@ const Sidebar = () => {
 
 	return (
 		<>
-			<SidebarWrapper
-				sx={{
-					display: {
-						xs: "none",
-						lg: "inline-block",
-					},
-					position: "fixed",
-					left: 0,
-					top: 0,
-					background:
-						theme.palette.mode === "dark"
-							? alpha(lighten(theme.header.background as string, 0.1), 0.5)
-							: darken(theme.colors.alpha.black[100], 0.5),
-					boxShadow:
-						theme.palette.mode === "dark" ? theme.sidebar.boxShadow : "none",
-				}}
-			>
-				<Scrollbar>
-					<Box mt={3}>
-						<Box
-							mx={2}
-							sx={{
-								width: 52,
-							}}
-						></Box>
-					</Box>
-					<Divider
-						sx={{
-							mt: theme.spacing(3),
-							mx: theme.spacing(2),
-							background: theme.colors.alpha.trueWhite[10],
-						}}
-					/>
-					<SidebarMenu />
-				</Scrollbar>
-				<Divider
-					sx={{
-						background: theme.colors.alpha.trueWhite[10],
-					}}
-				/>
-			</SidebarWrapper>
+			r{" "}
 			<Drawer
 				sx={{
 					boxShadow: `${theme.sidebar.boxShadow}`,

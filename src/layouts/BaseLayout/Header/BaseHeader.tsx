@@ -45,6 +45,7 @@ const BaseHeader = () => {
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "space-between",
+					marginLeft: "32px",
 				}}
 			>
 				<Tooltip arrow title="Toggle Menu">
@@ -89,10 +90,6 @@ const HeaderWrapper = styled(Box)(
         position: fixed;
         justify-content: space-between;
         width: 100%;
-        @media (min-width: ${theme.breakpoints.values.lg}px) {
-            left: ${theme.sidebar.width};
-            width: auto;
-        }
 `
 );
 
