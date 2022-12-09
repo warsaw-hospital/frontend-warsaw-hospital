@@ -39,7 +39,7 @@ const HeaderWrapper = styled(Box)(
 );
 
 function Header() {
-	const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
+	const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
 	const theme = useTheme();
 
 	return (
@@ -82,7 +82,7 @@ function Header() {
 				>
 					<Tooltip arrow title="Toggle Menu">
 						<IconButton color="primary" onClick={toggleSidebar}>
-							{!sidebarToggle ? (
+							{!isSidebarOpen ? (
 								<MenuTwoToneIcon fontSize="small" />
 							) : (
 								<CloseTwoToneIcon fontSize="small" />

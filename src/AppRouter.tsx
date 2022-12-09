@@ -12,8 +12,8 @@ const AppRouter = () => {
 	return (
 		<LocalizationProvider dateAdapter={AdapterMoment}>
 			<CssBaseline />
-			<NavBar />
 			{content}
+			<NavBar />
 		</LocalizationProvider>
 	);
 };
