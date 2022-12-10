@@ -13,12 +13,13 @@ const DoctorListPage = () => {
 	const getDoctors = async () => {
 		let response = await DoctorAPI.findAllFilteredBy();
 		setDoctors(response);
+		console.log("doctors: ", response);
 	};
 
 	return (
 		<div>
 			{doctors?.map((doctor) => (
-				<DoctorInfoComponent doctor={doctor} />
+				<DoctorInfoComponent key={doctor.id} doctor={doctor} />
 			))}
 		</div>
 	);

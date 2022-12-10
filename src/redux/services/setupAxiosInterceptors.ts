@@ -1,5 +1,11 @@
 import axios, { AxiosError } from "axios";
 
+// Axios config
+axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.headers.common["Content-Type"] = "application/json";
+axios.defaults.headers.common["Accept"] = "application/json";
+
+
 /**
  * It intercepts all requests  responses from the axios library and if there's an error, it
  * dispatches an alert action to the Redux store

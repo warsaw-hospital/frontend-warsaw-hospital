@@ -48,8 +48,8 @@ const BaseLayout = (props: BaseLayoutProps) => {
 			{/* {isLoggedIn && <BaseHeader />} */}
 			<BaseHeader />
 
-			{isLoggedIn && <BaseSidebar />}
-			{/* <BaseSidebar /> */}
+			{/* {isLoggedIn && <BaseSidebar />} */}
+			<BaseSidebar />
 			<Box
 				sx={{
 					position: "relative",

@@ -20,6 +20,7 @@ const DoctorInfoPage = () => {
 	const getDoctor = async () => {
 		let response = await DoctorAPI.findById(doctorId);
 		setDoctor(response);
+		console.log("doctor info: ", response);
 	};
 	return (
 		<div

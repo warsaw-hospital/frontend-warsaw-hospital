@@ -7,12 +7,12 @@ import StatusResponse from "models/auth/StatusResponse";
 const baseUrl = apiEndpoints.auth;
 
 const AuthAPI = {
-	isLoggedIn: (): Promise<StatusResponse> => axios.get(`${baseUrl}/status`),
 	login: (request: LoginRequest): Promise<boolean> =>
-		axios.post(`${baseUrl}/login`, request),
+	axios.post(`${baseUrl}/login`, request),
 	register: (request: RegisterRequest): Promise<boolean> =>
-		axios.post(`${baseUrl}/register`, request),
+	axios.post(`${baseUrl}/register`, request),
 	logout: (): Promise<void> => axios.post(`${baseUrl}/logout`),
+	isLoggedIn: (): Promise<StatusResponse> => axios.get(`${baseUrl}/status`),
 };
 
 export default AuthAPI;

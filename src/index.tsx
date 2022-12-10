@@ -2,7 +2,8 @@ import AppRouter from "AppRouter";
 import { SidebarProvider } from "contexts/SidebarContext";
 import "nprogress/nprogress.css";
 
-import ReactDOM from "react-dom";
+
+import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -12,9 +13,11 @@ import ThemeProviderWrapper from "theme/ThemeProvider";
 
 import "./index.css";
 
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+
 setupAxiosInterceptors();
 
-ReactDOM.render(
+root.render(
 	<HelmetProvider>
 		<SidebarProvider>
 			<BrowserRouter>
@@ -25,6 +28,5 @@ ReactDOM.render(
 				</Provider>
 			</BrowserRouter>
 		</SidebarProvider>
-	</HelmetProvider>,
-	document.getElementById("root")
+	</HelmetProvider>
 );
