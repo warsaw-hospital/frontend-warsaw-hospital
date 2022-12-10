@@ -1,6 +1,10 @@
 import { Typography } from "@mui/material";
+import LoginYT from "components/login/LoginYT";
 
 const Sandbox = () => {
+	const handleChange = () => {
+		console.log("handleChange");
+	};
 	return (
 		<div
 			style={{
@@ -19,6 +23,8 @@ const Sandbox = () => {
 			>
 				Sandbox
 			</Typography>
+
+			<LoginYT handleChange={handleChange} />
 		</div>
 	);
 };

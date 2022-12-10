@@ -5,12 +5,14 @@ import { Outlet } from "react-router-dom";
 import { alpha, Box, lighten, useTheme } from "@mui/material";
 import BaseHeader from "./Header/BaseHeader";
 import BaseSidebar from "./Sidebar/BaseSidebar";
+import { useAppSelector } from "redux/store/hooks";
 
 interface BaseLayoutProps {
 	children?: ReactNode;
 }
 
 const BaseLayout = (props: BaseLayoutProps) => {
+	const isLoggedIn = useAppSelector((state) => state.common.user?.isLoggedIn);
 	const { children } = props;
 
 	const theme = useTheme();
@@ -43,8 +45,11 @@ const BaseLayout = (props: BaseLayoutProps) => {
 				},
 			}}
 		>
+			{/* {isLoggedIn && <BaseHeader />} */}
 			<BaseHeader />
-			<BaseSidebar />
+
+			{isLoggedIn && <BaseSidebar />}
+			{/* <BaseSidebar /> */}
 			<Box
 				sx={{
 					position: "relative",

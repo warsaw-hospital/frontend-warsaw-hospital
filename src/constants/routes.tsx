@@ -1,5 +1,6 @@
 import RouteGroup from "models/routes/RouteGroup";
-import DoctorInfoPage from "pages/doctor/DoctorInfoPage";
+import DoctorInfoPage from "pages/doctors/DoctorInfoPage";
+import DoctorListPage from "pages/doctors/DoctorListPage";
 import HomePage from "pages/home/HomePage";
 import Sandbox from "pages/sandbox/Sandbox";
 
@@ -20,10 +21,16 @@ const routes: RouteGroup[] = [
 				element: <Sandbox />,
 			},
 			{
-				path: "/doctor-info",
+				path: "/doctor/info",
 				key: "doctor-info",
 				pageTitle: "Doctor Info",
 				element: <DoctorInfoPage />,
+			},
+			{
+				path: "/doctor/all",
+				key: "doctor-info",
+				pageTitle: "Doctor Info",
+				element: <DoctorListPage />,
 			},
 		],
 	},

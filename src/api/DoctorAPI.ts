@@ -12,11 +12,11 @@ const DoctorAPI = {
 	//User endpoints
 	findById: (id: number): Promise<DoctorResponse> =>
 		axios.get(`${baseUrl}/${id}`),
-	findAllFilteredBy: (filter: DoctorFilter): Promise<DoctorResponse[]> =>
+	findAllFilteredBy: (filter?: DoctorFilter): Promise<DoctorResponse[]> =>
 		axios.post(`${baseUrl}/filter`, {
 			params: {
-				search: filter.search,
-				specialization: filter.specialization,
+				search: filter?.search,
+				specialization: filter?.specialization,
 			},
 		}),
 	findAllSpecializations: (): Promise<SpecializationResponse[]> =>

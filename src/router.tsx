@@ -7,6 +7,9 @@ import StatusComingSoon from "pages/status/ComingSoonPage";
 import StatusMaintenance from "pages/status/MaintenancePage";
 import Status404 from "pages/status/Status404Page";
 import Status500 from "pages/status/Status500Page";
+import DoctorInfoPage from "pages/doctors/DoctorInfoPage";
+import DoctorListPage from "pages/doctors/DoctorListPage";
+import PatientProfile from "pages/patient/PatientProfile";
 
 const routes: RouteObject[] = [
 	{
@@ -14,6 +17,27 @@ const routes: RouteObject[] = [
 		path: "",
 		element: <BaseLayout />,
 		children: [
+			{
+				path: "doctor",
+				children: [
+					{
+						path: "info/:id",
+						element: <DoctorInfoPage />
+					},
+					{
+						path: "all",
+						element: <DoctorListPage />,
+					}
+
+				]
+			},{
+				path: "/patient",
+				children: [
+					{
+						path: "profile",
+						element: <PatientProfile/>
+					}]
+			},
 			{
 				// Status pages
 				path: "status",
@@ -41,20 +65,20 @@ const routes: RouteObject[] = [
 				],
 			},
 			{
-				path: "*",
-				element: <Status404 />,
-			},
-
-			{
-				path: "overview/home",
+				path: "home",
 				element: <Navigate to="/" replace />,
 				children: [
 					{
-						path: "overview/home",
+						path: "",
 						element: <Navigate to="/" replace />,
 					},
 				],
 			},
+			{
+				path: "*",
+				element: <Status404 />,
+			},
+
 		],
 	},
 ];

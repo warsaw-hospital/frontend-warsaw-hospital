@@ -13,7 +13,7 @@ export const commonSlice = createSlice({
 	initialState: initialState,
 	reducers: {
 		getAndSetUser(state, action) {
-			state.user = action.payload.me;
+			state.user = action.payload.user;
 			state.isDoctor = hasRole("ADMIN", action.payload.user.roles);
 		},
 	},
