@@ -6,9 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import * as yup from "yup";
 import FormTextField from "../form/FormTextField";
 import ReadableHiddenPasswordField from "../form/ReadableHiddenPasswordField";
-import "./LoginDialogStyle.css";
+import "./Login.css";
 
-const LoginThroughPasswordForm = () => {
+const LoginThroughPasswordForm = (props: { isDoctorLogin?: boolean }) => {
+	const { isDoctorLogin } = props;
 	const [loggedIn, setLoggedIn] = useState<boolean | undefined>(undefined);
 
 	const handleSimpleLogin = async (request: LoginRequest) => {
@@ -16,17 +17,31 @@ const LoginThroughPasswordForm = () => {
 		setLoggedIn(response);
 	};
 
+	const handleDoctorLogin = async (request: LoginRequest) => {
+		let response = await AuthAPI.doctorLogin(request);
+		setLoggedIn(response);
+	};
+
 	useEffect(() => {
 		if (loggedIn) {
-			window.location.assign("/pagrindinis");
+			window.location.assign("/sandbox");
 		}
 	}, [loggedIn]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handleFormikSubmit = (values: any) => {
-		handleSimpleLogin({
-			password: values.password,
-			email: values.email,
-		});
+		console.log("values", values);
+		console.log("isDoctorLogin", isDoctorLogin);
+		if (isDoctorLogin) {
+			handleDoctorLogin({
+				password: values.password,
+				email: values.email,
+			});
+		} else {
+			handleSimpleLogin({
+				password: values.password,
+				email: values.email,
+			});
+		}
 	};
 
 	const ref = useRef<HTMLInputElement>(null);
@@ -38,7 +53,14 @@ const LoginThroughPasswordForm = () => {
 			onSubmit={handleFormikSubmit}
 		>
 			{(formik: FormikProps<any>) => (
-				<div className={"login-with-password-body"}>
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						gap: "16px",
+					}}
+				>
 					<FormTextField
 						title={"Email"}
 						name={"email"}
@@ -62,6 +84,9 @@ const LoginThroughPasswordForm = () => {
 						variant="outlined"
 						enterSubmitAction={() => formik.handleSubmit()}
 						className={"login-input"}
+						style={{
+							marginBottom: "32px",
+						}}
 					/>
 					{loggedIn === false && (
 						<label style={{ color: "red" }}>

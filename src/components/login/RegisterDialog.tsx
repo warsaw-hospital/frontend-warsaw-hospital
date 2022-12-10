@@ -1,69 +1,151 @@
-import { Dialog } from "@mui/material";
+import { ArrowBackIosNew } from "@mui/icons-material";
+import { Button, Dialog, Typography } from "@mui/material";
 import AuthAPI from "api/AuthAPI";
 import FormTextField from "components/form/FormTextField";
 import ReadableHiddenPasswordField from "components/form/ReadableHiddenPasswordField";
 import { Form, Formik, FormikProps } from "formik";
+import { useNavigate } from "react-router";
 import * as yup from "yup";
+import "./Login.css";
 
 interface RegisterDialogProps {
 	open: boolean;
+	handleLoginOpen: () => void;
 	handleClose: () => void;
 }
 
 const RegisterDialog = (props: RegisterDialogProps) => {
+	const navigate = useNavigate();
 	const handleSubmit = async (values: RegistrationValues) => {
 		console.log("values", values);
 		let response = await AuthAPI.register(values);
+		props.handleClose();
+		navigate("/home");
+
 		console.log("AuthPAI response", response);
 	};
 	return (
 		<Dialog
-			open={true}
-			onClose={() => {}}
+			open={props.open}
+			onClose={props.handleClose}
 			PaperProps={{
 				style: {
-					backgroundColor: "transparent",
 					boxSizing: "border-box",
-					padding: "16px",
+					minWidth: "600px",
 					boxShadow: "none",
 				},
 			}}
 		>
-		<Formik
-			initialValues={initialValues}
-			validationSchema={validationSchema}
-			onSubmit={handleSubmit}
-		>
-			{(formik: FormikProps<RegistrationValues>) => (
-				<Form className="register-dialog-container">
-					<div className="input-container">
-						<FormTextField
-							name="name"
-							label="Name"
-							value={formik.values.name}
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+				}}
+			>
+				<div
+					className={"login-header-buttons"}
+					style={{
+						backgroundColor: "#F5F5F5",
+						width: "100%",
+					}}
+				>
+					<Button
+						className="button"
+						onClick={() => {
+							props.handleLoginOpen();
+							props.handleClose();
+						}}
+					>
+						<ArrowBackIosNew
+							style={{
+								height: "16px",
+								width: "16px",
+								marginRight: "4px",
+							}}
 						/>
-						<FormTextField
-							name="lastname"
-							label="Lastname"
-							value={formik.values.lastname}
-						/>
+						<Typography variant="h5" className="login-header-return-button">
+							Back
+						</Typography>
+					</Button>
+					<Typography
+						variant="body1"
+						className="login-header-return-button"
+						style={{
+							fontStyle: "italic",
+							marginRight: "24px",
+						}}
+					>
+						Signing up
+					</Typography>
+				</div>
+				<Formik
+					initialValues={initialValues}
+					validationSchema={validationSchema}
+					onSubmit={handleSubmit}
+				>
+					{(formik: FormikProps<RegistrationValues>) => (
+						<Form className="register-dialog-container">
+							<div className="input-container">
+								<FormTextField
+									name="name"
+									label="Name"
+									value={formik.values.name}
+								/>
+								<FormTextField
+									name="lastname"
+									label="Lastname"
+									value={formik.values.lastname}
+								/>
 
-						<FormTextField
-							name="email"
-							label="Email"
-							value={formik.values.email}
-						/>
+								<FormTextField
+									name="email"
+									label="Email"
+									value={formik.values.email}
+								/>
 
-						<ReadableHiddenPasswordField
-							name="password"
-							label="Password"
-							value={formik.values.password}
-							variant="outlined"
-						/>
-					</div>
-				</Form>
-			)}
-		</Formik>
+								<ReadableHiddenPasswordField
+									name="password"
+									label="Password"
+									value={formik.values.password}
+									variant="outlined"
+								/>
+								<FormTextField
+									name="personalCode"
+									label="Personal Code"
+									value={formik.values.personalCode}
+								/>
+								<FormTextField
+									name="phoneNumber"
+									label="Phone Number"
+									value={formik.values.phoneNumber}
+								/>
+								<FormTextField
+									name="address"
+									label="Address"
+									value={formik.values.address}
+								/>
+							</div>
+							<Button
+								fullWidth
+								onClick={() => formik.handleSubmit()}
+								type="submit"
+								color="primary"
+								variant="contained"
+								disabled={!formik.isValid || formik.isSubmitting}
+								style={{
+									textTransform: "none",
+									padding: "16px 40px",
+								}}
+							>
+								<Typography variant="h5" color="#FFFFFF">
+									Register
+								</Typography>
+							</Button>
+						</Form>
+					)}
+				</Formik>
+			</div>
 		</Dialog>
 	);
 };
@@ -97,7 +179,5 @@ const validationSchema = yup.object({
 	phoneNumber: yup.string().required("Phone number is required"),
 	address: yup.string().required("Address is required"),
 });
-
-
 
 export default RegisterDialog;

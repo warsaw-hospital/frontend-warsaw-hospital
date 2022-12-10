@@ -1,6 +1,6 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import DoctorAPI from "api/DoctorAPI";
-import DoctorInfoComponent from "components/doctor/DoctorInfoComponent";
+import { imageSrcList } from "components/doctor/DoctorInfoComponent";
 import DoctorResponse from "models/doctor/DoctorResponse";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -22,6 +22,7 @@ const DoctorInfoPage = () => {
 		setDoctor(response);
 		console.log("doctor info: ", response);
 	};
+
 	return (
 		<div
 			style={{
@@ -31,7 +32,17 @@ const DoctorInfoPage = () => {
 			}}
 		>
 			<Typography>Docto Info pager</Typography>
-			{doctor && <DoctorInfoComponent doctor={doctor} />}
+			{doctor && (
+				<Box
+					style={{
+						borderRadius: "5px 5px 0px 0px",
+						maxWidth: "300px",
+						width: "250px",
+					}}
+					component="img"
+					src={imageSrcList[doctor.id % imageSrcList.length]}
+				/>
+			)}
 		</div>
 	);
 };

@@ -2,7 +2,6 @@ import AppRouter from "AppRouter";
 import { SidebarProvider } from "contexts/SidebarContext";
 import "nprogress/nprogress.css";
 
-
 import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
@@ -13,7 +12,9 @@ import ThemeProviderWrapper from "theme/ThemeProvider";
 
 import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const root = ReactDOM.createRoot(
+	document.getElementById("root") as HTMLElement
+);
 
 setupAxiosInterceptors();
 

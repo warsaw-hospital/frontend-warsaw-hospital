@@ -1,5 +1,5 @@
 const PatientProfile = () => {
-    return (<></>)
+	return <></>;
 };
 
 export default PatientProfile;

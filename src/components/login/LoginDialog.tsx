@@ -1,18 +1,21 @@
 import { ArrowBackIosNew } from "@mui/icons-material";
 import { Button, Dialog, Typography } from "@mui/material";
-import AppTheme from "theme/AppTheme";
 import { useRef } from "react";
+import "./Login.css";
 import LoginThroughPasswordForm from "./LoginThroughPasswordForm";
 
 interface LoginDialogProps {
 	open: boolean;
+	isDoctorLogin?: boolean;
 	handleClose: () => void;
+	handleRegisterOpen: () => void;
+	handleRegisterClose: () => void;
 }
 
 const LoginDialog = (props: LoginDialogProps) => {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	return (
-		<Dialog fullWidth open={true} onClose={() => {}}>
+		<Dialog fullWidth open={props.open} onClose={() => {}}>
 			<div ref={wrapperRef} className={"login-main-component"}>
 				<div
 					className={"login-header-buttons"}
@@ -25,28 +28,59 @@ const LoginDialog = (props: LoginDialogProps) => {
 							style={{
 								height: "16px",
 								width: "16px",
+								marginRight: "4px",
 							}}
 						/>
-						<Typography variant="h5" className={"login-header-return-button"}>
+						<Typography variant="h5" className="login-header-return-button">
 							Back
 						</Typography>
 					</Button>
-
-					<div className="login-close-text">
-						<Button className="button" onClick={() => props.handleClose()}>
-							<Typography variant="h5" color={AppTheme.palette.text.primary}>
-								Close
-							</Typography>
-						</Button>
-					</div>
+					<Typography
+						variant="body1"
+						className="login-header-return-button"
+						style={{
+							fontStyle: "italic",
+							marginRight: "24px",
+						}}
+					>
+						Logging in
+					</Typography>
 				</div>
 
-				<div className={"login-body"}>
-					<Typography variant={"h2"} className={"login-title"}>
-						Prisijungti per
+				<div
+					style={{
+						padding: "24px",
+					}}
+				>
+					<LoginThroughPasswordForm isDoctorLogin={props.isDoctorLogin} />
+				</div>
+				<div
+					style={{
+						padding: "8px",
+						paddingBottom: "24px",
+					}}
+				>
+					<Typography variant="body2" color="text.secondary" align="center">
+						Not a member of the community?{" "}
 					</Typography>
+					<Typography
+						onClick={() => {
+							props.handleRegisterOpen();
 
-					<LoginThroughPasswordForm />
+							props.handleClose();
+						}}
+						variant="body1"
+						color="hyperlink"
+						align="center"
+						style={{
+							marginTop: "8px",
+							textDecoration: "underline",
+							fontWeight: "bold",
+							cursor: "pointer",
+						}}
+					>
+						Register
+					</Typography>
 				</div>
 			</div>
 		</Dialog>

@@ -576,6 +576,10 @@ export const AppTheme = createTheme({
 					textTransform: "none",
 					paddingLeft: 16,
 					paddingRight: 16,
+					":disabled": {
+						backgroundColor: "#4A5E96",
+						color: "#FFFFFF",
+					},
 
 					".MuiSvgIcon-root": {
 						transition: "all .2s",
@@ -1160,7 +1164,7 @@ export const AppTheme = createTheme({
 			fontWeight: 600,
 			lineHeight: 1.4,
 			fontSize: 25,
-			color: colors.alpha.black[100],
+			// color: colors.alpha.black[100],
 		},
 		h4: {
 			fontWeight: 500,

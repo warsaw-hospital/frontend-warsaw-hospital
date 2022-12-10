@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import "./Dialog.css";
+import "./Login.css";
 
 interface Props {
 	cancelButtonLabel?: string;

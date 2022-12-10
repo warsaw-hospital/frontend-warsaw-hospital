@@ -1,7 +1,7 @@
 import { Button, Typography } from "@mui/material";
 
 import AppTheme from "theme/AppTheme";
-import "./Dialog.css";
+import "./Login.css";
 
 interface Props {
 	title?: string;

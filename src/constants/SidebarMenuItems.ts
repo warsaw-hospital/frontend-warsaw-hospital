@@ -29,7 +29,7 @@ const sidebarMenuItems: SidebarMenuItemType[] = [
 	},
 	{
 		title: "Account settings",
-		path: "/account/settings",
+		path: "/patient/settings",
 		icon: ManageAccountsOutlined,
 	},
 	{

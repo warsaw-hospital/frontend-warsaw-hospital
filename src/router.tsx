@@ -10,33 +10,47 @@ import Status500 from "pages/status/Status500Page";
 import DoctorInfoPage from "pages/doctors/DoctorInfoPage";
 import DoctorListPage from "pages/doctors/DoctorListPage";
 import PatientProfile from "pages/patient/PatientProfile";
+import HomePage from "pages/home/HomePage";
 
-const routes: RouteObject[] = [
+const router: RouteObject[] = [
 	{
-		// TODO: remove header from status pages
 		path: "",
-		element: <BaseLayout />,
 		children: [
 			{
 				path: "doctor",
+				element: <BaseLayout />,
 				children: [
 					{
 						path: "info/:id",
-						element: <DoctorInfoPage />
+						element: <DoctorInfoPage />,
 					},
 					{
+						id: "admin",
 						path: "all",
+						index: false,
 						element: <DoctorListPage />,
-					}
-
-				]
-			},{
+					},
+				],
+			},
+			{
+				path: "",
+				element: <BaseLayout />,
+				children: [
+					{
+						path: "",
+						element: <HomePage />,
+					},
+				],
+			},
+			{
 				path: "/patient",
+				element: <BaseLayout />,
 				children: [
 					{
 						path: "profile",
-						element: <PatientProfile/>
-					}]
+						element: <PatientProfile />,
+					},
+				],
 			},
 			{
 				// Status pages
@@ -78,9 +92,9 @@ const routes: RouteObject[] = [
 				path: "*",
 				element: <Status404 />,
 			},
-
 		],
 	},
+	{},
 ];
 
-export default routes;
+export default router;

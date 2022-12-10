@@ -1,7 +1,6 @@
 import { Box, Button, Divider, Typography } from "@mui/material";
-import DoctorAPI from "api/DoctorAPI";
 import DoctorResponse from "models/doctor/DoctorResponse";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import "./DoctorComponents.css";
 
 interface DoctorInfoComponentProps {
@@ -10,27 +9,36 @@ interface DoctorInfoComponentProps {
 
 const DoctorInfoComponent = (props: DoctorInfoComponentProps) => {
 	const { doctor } = props;
-
+	const imageSrc = imageSrcList[doctor.id % imageSrcList.length];
+	const navigate = useNavigate();
 	return (
 		<div className="doctor-component-container">
 			<div className="doctor-icon-container">
 				<Box
 					style={{
-						width: "100%",
 						borderRadius: "5px 5px 0px 0px",
+						maxWidth: "300px",
+						width: "250px",
 					}}
 					component="img"
-					src="static/images/doctor/doctor_1.jpg"
+					src={imageSrc}
 				/>
 			</div>
 			<Divider
 				style={{
 					width: "100%",
-					margin: "16px 0px",
+					margin: "16px 0px 4px 0px",
 				}}
 			/>
 			<div className="doctor-name-and-specialty-container">
-				<Typography variant="h4">{doctor.name}</Typography>
+				<Typography
+					variant="h3"
+					style={{
+						paddingBottom: "8px",
+					}}
+				>
+					{doctor.name}
+				</Typography>
 				<Typography variant="body2">
 					{doctor.specializations
 						.map((specialization) => specialization.name)
@@ -39,6 +47,9 @@ const DoctorInfoComponent = (props: DoctorInfoComponentProps) => {
 			</div>
 			<div className="button-container">
 				<Button
+					onClick={() => {
+						navigate(`/doctor/info/${doctor.id}`);
+					}}
 					variant="contained"
 					color="primary"
 					style={{
@@ -57,5 +68,13 @@ const DoctorInfoComponent = (props: DoctorInfoComponentProps) => {
 		</div>
 	);
 };
+
+export const imageSrcList = [
+	"/static/images/doctor/doctor_1.jpg",
+	"/static/images/doctor/doctor_2.jpg",
+	"/static/images/doctor/doctor_3.jpg",
+	"/static/images/doctor/doctor_4.jpg",
+	"/static/images/doctor/doctor_5.jpg",
+];
 
 export default DoctorInfoComponent;

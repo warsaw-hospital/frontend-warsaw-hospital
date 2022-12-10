@@ -33,7 +33,7 @@ function SidebarMenu(props: SideMenuProps) {
 									disableRipple
 									component={RouterLink}
 									onClick={closeSidebar}
-									to="/overview"
+									to="/"
 									startIcon={<HomeOutlined />}
 								>
 									Homepage
