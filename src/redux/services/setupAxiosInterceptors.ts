@@ -10,7 +10,7 @@ axios.defaults.headers.common["Accept"] = "application/json";
  * dispatches an alert action to the Redux store
  * @param {any} store - any - this is the Redux store that we'll use to dispatch actions.
  */
-const setupAxiosInterceptors = () => {
+const setupAxiosInterceptors = (store?: any) => {
 	const handleResponseError = (error: AxiosError) => {
 		return Promise.reject(error);
 	};

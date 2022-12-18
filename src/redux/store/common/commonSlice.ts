@@ -4,7 +4,7 @@ import UserRoleResponse from "models/user/UserRoleResponse";
 
 export const initialState: CommonState = {
 	isDoctor: undefined,
-	user: undefined,
+	me: undefined,
 	actions: [],
 };
 
@@ -13,8 +13,8 @@ export const commonSlice = createSlice({
 	initialState: initialState,
 	reducers: {
 		getAndSetUser(state, action) {
-			state.user = action.payload.user;
-			state.isDoctor = hasRole("ADMIN", action.payload.user.roles);
+			state.me = action.payload.me;
+			state.isDoctor = hasRole("ADMIN", action.payload.me.roles);
 		},
 	},
 });

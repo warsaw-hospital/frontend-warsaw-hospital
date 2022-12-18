@@ -7,7 +7,7 @@ interface RequireAuthProps {
 }
 
 const RequireAuth = ({ forAdmins = false, children }: RequireAuthProps) => {
-	const me = useAppSelector((state) => state.common.user);
+	const me = useAppSelector((state) => state.common.me);
 	const isAdmin = useAppSelector((state) => state.common.isDoctor);
 
 	// If user is not logged in, when do not show the page

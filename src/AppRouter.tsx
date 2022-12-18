@@ -3,16 +3,22 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { useEffect } from "react";
 import { useRoutes } from "react-router-dom";
+import common from "redux/common";
+import { useAppSelector } from "redux/store/hooks";
 import router from "router";
 import "./AppRouter.css";
 
 const AppRouter = () => {
 	const content = useRoutes(router);
-
+	const user = useAppSelector((state) => state.common.me);
+	// useEffect(() => {
+	// 	common.getAndSetUser();
+	// 	console.log("user", user);
+	// }, [content]);
 	useEffect(() => {
-		console.log("content", content);
-	}, [content]);
-	useEffect(() => {}, []);
+		common.getAndSetMe();
+		console.log("user", user);
+	}, []);
 
 	return (
 		<LocalizationProvider dateAdapter={AdapterMoment}>

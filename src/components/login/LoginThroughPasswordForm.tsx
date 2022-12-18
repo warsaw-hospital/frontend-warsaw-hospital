@@ -24,7 +24,7 @@ const LoginThroughPasswordForm = (props: { isDoctorLogin?: boolean }) => {
 
 	useEffect(() => {
 		if (loggedIn) {
-			window.location.assign("/sandbox");
+			// window.location.assign("/sandbox");
 		}
 	}, [loggedIn]); // eslint-disable-line react-hooks/exhaustive-deps
 

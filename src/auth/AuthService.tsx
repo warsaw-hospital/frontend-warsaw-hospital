@@ -3,11 +3,11 @@ import { useAppSelector } from "redux/store/hooks";
 import common from "redux/common";
 
 const AuthService = () => {
-	const user = useAppSelector((state) => state.common.user);
+	const user = useAppSelector((state) => state.common.me);
 
 	useEffect(() => {
 		if (!user) {
-			common.getAndSetUser();
+			common.getAndSetMe();
 		} else {
 			common.getAndSetActions();
 		}

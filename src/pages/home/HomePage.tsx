@@ -4,8 +4,14 @@ import { ReactComponent as RightTreeHomePage } from "assets/svg/right-tree-home-
 import "./HomePage.css";
 import { Email } from "@mui/icons-material";
 import { Button, Typography } from "@mui/material";
+import common from "redux/common";
+import AuthAPI from "api/AuthAPI";
 
 const HomePage = () => {
+	const test = async () => {
+		let res = await AuthAPI.isLoggedIn();
+		console.log(res);
+	}
 	return (
 		<div
 			style={{
@@ -54,6 +60,8 @@ const HomePage = () => {
 						hospital website. We hope you will find it easier to navigate and
 						more user-friendly. If you have any questions...
 					</Typography>
+					<Button onClick={() => common.getAndSetMe()}>redux</Button>
+					<Button onClick={() => test()}>auth</Button>
 				</div>
 				<div
 					className={"homepage-upper-section-buttons"}

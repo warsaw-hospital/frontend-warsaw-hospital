@@ -1,8 +1,8 @@
 import { store } from "./store/rootReducer";
-import { getAndSetUser, getAndSetActions } from "./store/common/commonActions";
+import { getAndSetMe, getAndSetActions } from "./store/common/commonActions";
 
 const common = {
-	getAndSetUser: () => store.dispatch(getAndSetUser()),
+	getAndSetMe: () => store.dispatch(getAndSetMe()),
 	getAndSetActions: () => store.dispatch(getAndSetActions()),
 };
 

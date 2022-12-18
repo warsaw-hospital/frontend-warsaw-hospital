@@ -4,15 +4,15 @@ import { RootState } from "../rootReducer";
 import { commonSlice } from "./commonSlice";
 
 const commonActions = commonSlice.actions;
-const getAndSetUser =
+const getAndSetMe =
 	(): ThunkAction<void, RootState, unknown, AnyAction> => (dispatch) =>
-		UserAPI.getUserInfo().then((user) => {
-			dispatch(commonActions.getAndSetUser({ user: user }));
-			console.log("getAndSetUser", user);
+		UserAPI.getUserInfo().then((me) => {
+			dispatch(commonActions.getAndSetUser({ me: me }));
+			console.log("getAndSetUser", me);
 		});
 
 const getAndSetActions =
 	(): ThunkAction<void, RootState, unknown, AnyAction> => (dispatch) =>
 		console.log("getAndSetActions");
 
-export { getAndSetUser, getAndSetActions };
+export { getAndSetMe, getAndSetActions };
