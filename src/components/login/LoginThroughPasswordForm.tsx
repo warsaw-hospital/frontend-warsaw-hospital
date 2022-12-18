@@ -1,14 +1,15 @@
-import { Button, Divider, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import AuthAPI from "api/AuthAPI";
 import { Formik, FormikProps } from "formik";
+import LoginRequest from "models/auth/LoginRequest";
 import { useEffect, useRef, useState } from "react";
 import * as yup from "yup";
-import LoginRequest from "models/auth/LoginRequest";
 import FormTextField from "../form/FormTextField";
 import ReadableHiddenPasswordField from "../form/ReadableHiddenPasswordField";
-import "./LoginDialogStyle.css";
+import "./Login.css";
 
-const LoginThroughPasswordForm = () => {
+const LoginThroughPasswordForm = (props: { isDoctorLogin?: boolean }) => {
+	const { isDoctorLogin } = props;
 	const [loggedIn, setLoggedIn] = useState<boolean | undefined>(undefined);
 
 	const handleSimpleLogin = async (request: LoginRequest) => {
@@ -16,17 +17,31 @@ const LoginThroughPasswordForm = () => {
 		setLoggedIn(response);
 	};
 
+	const handleDoctorLogin = async (request: LoginRequest) => {
+		let response = await AuthAPI.doctorLogin(request);
+		setLoggedIn(response);
+	};
+
 	useEffect(() => {
 		if (loggedIn) {
-			window.location.assign("/pagrindinis");
+			// window.location.assign("/sandbox");
 		}
 	}, [loggedIn]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handleFormikSubmit = (values: any) => {
-		handleSimpleLogin({
-			password: values.password,
-			email: values.email,
-		});
+		console.log("values", values);
+		console.log("isDoctorLogin", isDoctorLogin);
+		if (isDoctorLogin) {
+			handleDoctorLogin({
+				password: values.password,
+				email: values.email,
+			});
+		} else {
+			handleSimpleLogin({
+				password: values.password,
+				email: values.email,
+			});
+		}
 	};
 
 	const ref = useRef<HTMLInputElement>(null);
@@ -38,10 +53,16 @@ const LoginThroughPasswordForm = () => {
 			onSubmit={handleFormikSubmit}
 		>
 			{(formik: FormikProps<any>) => (
-				<div className={"login-with-password-body"}>
-					<Divider>arba </Divider>
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						gap: "16px",
+					}}
+				>
 					<FormTextField
-						title={"El. paštas"}
+						title={"Email"}
 						name={"email"}
 						className={"login-input"}
 						onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -55,14 +76,17 @@ const LoginThroughPasswordForm = () => {
 						}}
 					/>
 					<ReadableHiddenPasswordField
-						title={"Slaptažodis"}
-						autoComplete={"current-password"}
+						title="Password"
+						autoComplete="current-password"
 						inputRef={ref}
-						name={"password"}
+						name="password"
 						enableEnterSubmit={true}
 						variant="outlined"
 						enterSubmitAction={() => formik.handleSubmit()}
 						className={"login-input"}
+						style={{
+							marginBottom: "32px",
+						}}
 					/>
 					{loggedIn === false && (
 						<label style={{ color: "red" }}>
@@ -73,16 +97,16 @@ const LoginThroughPasswordForm = () => {
 						fullWidth
 						onClick={() => formik.handleSubmit()}
 						type="submit"
-						color={"primary"}
-						variant={"contained"}
-						disabled={!formik.isValid}
+						color="primary"
+						variant="contained"
+						disabled={!formik.isValid || formik.isSubmitting}
 						style={{
 							textTransform: "none",
 							padding: "16px 40px",
 						}}
 					>
 						<Typography variant="h5" color="#FFFFFF">
-							Prisijungti
+							Log in
 						</Typography>
 					</Button>
 				</div>
@@ -99,9 +123,6 @@ const initialValues = {
 };
 
 const validationSchema = yup.object({
-	email: yup
-		.string()
-		.email("Elektroninis paštas turi būti teisingas.")
-		.required("Elektroninis paštas yra privalomas."),
-	password: yup.string().required("Slaptažodis yra privalomas"),
+	email: yup.string().email("Wrong email format").required("Email is required"),
+	password: yup.string().required("Password is required"),
 });

@@ -1,5 +1,6 @@
 import {
 	AccountCircleOutlined,
+	Inventory,
 	LocalHospitalOutlined,
 	ManageAccountsOutlined,
 } from "@mui/icons-material";
@@ -13,18 +14,28 @@ export interface SidebarMenuItemType {
 const sidebarMenuItems: SidebarMenuItemType[] = [
 	{
 		title: "All Doctors",
-		path: "/doctors",
+		path: "/doctor/all",
+		icon: LocalHospitalOutlined,
+	},
+	{
+		title: "Some doctor",
+		path: "/doctor/info/:id",
 		icon: LocalHospitalOutlined,
 	},
 	{
 		title: "Patient profile",
-		path: "/account/profile",
+		path: "/patient/profile",
 		icon: AccountCircleOutlined,
 	},
 	{
 		title: "Account settings",
-		path: "/account/settings",
+		path: "/patient/settings",
 		icon: ManageAccountsOutlined,
+	},
+	{
+		title: "Sandbox",
+		path: "/sandbox",
+		icon: Inventory,
 	},
 ];
 

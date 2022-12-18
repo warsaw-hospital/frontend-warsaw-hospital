@@ -19,6 +19,7 @@ const ReadableHiddenPasswordField = ({
 	title,
 	autoComplete = "off",
 	name,
+	style,
 	className,
 	enableEnterSubmit,
 	enterSubmitAction,
@@ -30,12 +31,16 @@ const ReadableHiddenPasswordField = ({
 		<FormTextField
 			title={title}
 			name={name}
+			label="Password"
 			inputRef={inputRef}
 			type={hidden ? "password" : "text"}
 			autoComplete={autoComplete}
 			enableEnterSubmit={enableEnterSubmit}
 			enterSubmitAction={enterSubmitAction}
 			className={className}
+			style={{
+				...style,
+			}}
 			endIcon={
 				<IconButton onClick={changeVisibility}>
 					{hidden ? <VisibilityIcon /> : <VisibilityOffIcon />}

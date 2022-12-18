@@ -8,7 +8,12 @@ const baseAdminUrl = apiEndpoints.userAdmin;
 
 const UserAPI = {
 	//User endpoints
-	getUserInfo: (): Promise<UserInfo> => axios.get(`${baseUrl}/info`),
+	getUserInfo: (): Promise<UserInfo> =>
+		axios.get(`${baseUrl}/me`, {
+			headers: {
+				"Access-Control-Allow-Origin": "*",
+			},
+		}),
 	changeUserInfo: (request: UserRequest): Promise<UserInfo> =>
 		axios.put(`${baseUrl}/change/info`, request),
 

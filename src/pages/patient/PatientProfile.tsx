@@ -1,3 +1,5 @@
-const PatientProfile = () => {};
+const PatientProfile = () => {
+	return <></>;
+};
 
 export default PatientProfile;

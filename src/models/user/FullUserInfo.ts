@@ -2,7 +2,7 @@ import UserInfo from "./UserInfo";
 
 interface FullUserInfo {
 	id: number;
-	userInfo: UserInfo;
+	me: UserInfo;
 }
 
 export default FullUserInfo;

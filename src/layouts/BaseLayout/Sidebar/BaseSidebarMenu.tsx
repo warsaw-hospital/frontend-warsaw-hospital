@@ -13,8 +13,9 @@ import { SidebarContext } from "contexts/SidebarContext";
 import { NavLink as RouterLink } from "react-router-dom";
 
 import { HomeOutlined } from "@mui/icons-material";
-import sidebarMenuItems from "constants/SidebarMenuItems";
+
 import SidebarMenuItem from "./SidebarMenuItem";
+import sidebarMenuItems from "constants/SidebarMenuItems";
 
 interface SideMenuProps {}
 
@@ -32,7 +33,7 @@ function SidebarMenu(props: SideMenuProps) {
 									disableRipple
 									component={RouterLink}
 									onClick={closeSidebar}
-									to="/overview"
+									to="/"
 									startIcon={<HomeOutlined />}
 								>
 									Homepage

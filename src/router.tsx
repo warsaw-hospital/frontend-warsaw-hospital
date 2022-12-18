@@ -7,13 +7,51 @@ import StatusComingSoon from "pages/status/ComingSoonPage";
 import StatusMaintenance from "pages/status/MaintenancePage";
 import Status404 from "pages/status/Status404Page";
 import Status500 from "pages/status/Status500Page";
+import DoctorInfoPage from "pages/doctors/DoctorInfoPage";
+import DoctorListPage from "pages/doctors/DoctorListPage";
+import PatientProfile from "pages/patient/PatientProfile";
+import HomePage from "pages/home/HomePage";
 
-const routes: RouteObject[] = [
+const router: RouteObject[] = [
 	{
-		// TODO: remove header from status pages
 		path: "",
-		element: <BaseLayout />,
 		children: [
+			{
+				path: "doctor",
+				element: <BaseLayout />,
+				children: [
+					{
+						path: "info/:id",
+						element: <DoctorInfoPage />,
+					},
+					{
+						id: "admin",
+						path: "all",
+						index: false,
+						element: <DoctorListPage />,
+					},
+				],
+			},
+			{
+				path: "",
+				element: <BaseLayout />,
+				children: [
+					{
+						path: "",
+						element: <HomePage />,
+					},
+				],
+			},
+			{
+				path: "/patient",
+				element: <BaseLayout />,
+				children: [
+					{
+						path: "profile",
+						element: <PatientProfile />,
+					},
+				],
+			},
 			{
 				// Status pages
 				path: "status",
@@ -41,22 +79,22 @@ const routes: RouteObject[] = [
 				],
 			},
 			{
-				path: "*",
-				element: <Status404 />,
-			},
-
-			{
-				path: "overview/home",
+				path: "home",
 				element: <Navigate to="/" replace />,
 				children: [
 					{
-						path: "overview/home",
+						path: "",
 						element: <Navigate to="/" replace />,
 					},
 				],
 			},
+			{
+				path: "*",
+				element: <Status404 />,
+			},
 		],
 	},
+	{},
 ];
 
-export default routes;
+export default router;
