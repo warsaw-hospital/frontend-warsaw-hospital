@@ -11,7 +11,7 @@ const HomePage = () => {
 	const test = async () => {
 		let res = await AuthAPI.isLoggedIn();
 		console.log(res);
-	}
+	};
 	return (
 		<div
 			style={{

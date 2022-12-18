@@ -13,7 +13,6 @@ const UserAPI = {
 			headers: {
 				"Access-Control-Allow-Origin": "*",
 			},
-
 		}),
 	changeUserInfo: (request: UserRequest): Promise<UserInfo> =>
 		axios.put(`${baseUrl}/change/info`, request),
