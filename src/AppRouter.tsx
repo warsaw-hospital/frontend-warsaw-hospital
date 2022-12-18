@@ -18,6 +18,7 @@ const AppRouter = () => {
 	useEffect(() => {
 		common.getAndSetMe();
 		console.log("user", user);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

@@ -1,11 +1,10 @@
 import { ReactComponent as LeftTreeHomePage } from "assets/svg/left-tree-home-page.svg";
 import { ReactComponent as RightTreeHomePage } from "assets/svg/right-tree-home-page.svg";
 
-import "./HomePage.css";
-import { Email } from "@mui/icons-material";
 import { Button, Typography } from "@mui/material";
-import common from "redux/common";
 import AuthAPI from "api/AuthAPI";
+import common from "redux/common";
+import "./HomePage.css";
 
 const HomePage = () => {
 	const test = async () => {
