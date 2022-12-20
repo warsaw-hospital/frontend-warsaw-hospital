@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import apiEndpoints from "constants/apiEndpoints";
 import DoctorFilter from "models/doctor/DoctorFilter";
 import DoctorRequest from "models/doctor/DoctorRequest";
@@ -8,18 +8,10 @@ import SpecializationResponse from "models/specialization/SpecializationResponse
 const baseUrl = apiEndpoints.doctor;
 const baseAdminUrl = apiEndpoints.doctorAdmin;
 
-const config: AxiosRequestConfig = {
-	headers: {
-		"Access-Control-Allow-Origin": "*",
-		"Content-Type": "application/json",
-	},
-};
-
 const DoctorAPI = {
 	//User endpoints
-
 	findById: (id: number): Promise<DoctorResponse> =>
-		axios.get(`${baseUrl}/${id}`, config),
+		axios.get(`${baseUrl}/${id}`),
 	findAllFilteredBy: (filter?: DoctorFilter): Promise<DoctorResponse[]> =>
 		axios.get(`${baseUrl}/filter`, {
 			params: {

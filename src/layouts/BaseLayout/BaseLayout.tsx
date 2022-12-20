@@ -16,7 +16,7 @@ interface BaseLayoutProps {
 
 const BaseLayout = (props: BaseLayoutProps) => {
 	const { children } = props;
-	const isLoggedIn = useAppSelector((state) => state.common.me?.isLoggedIn);
+	const isLoggedIn = useAppSelector((state) => state.common.me?.loggedIn);
 
 	const [loginDialogOpen, setLoginDialogOpen] = useState(false);
 	const [registerDialogOpen, setRegisterDialogOpen] = useState(false);

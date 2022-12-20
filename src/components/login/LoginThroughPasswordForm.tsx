@@ -8,18 +8,25 @@ import FormTextField from "../form/FormTextField";
 import ReadableHiddenPasswordField from "../form/ReadableHiddenPasswordField";
 import "./Login.css";
 
-const LoginThroughPasswordForm = (props: { isDoctorLogin?: boolean }) => {
+const LoginThroughPasswordForm = (props: {
+	isDoctorLogin?: boolean;
+	handleClose: () => void;
+}) => {
 	const { isDoctorLogin } = props;
 	const [loggedIn, setLoggedIn] = useState<boolean | undefined>(undefined);
 
 	const handleSimpleLogin = async (request: LoginRequest) => {
 		let response = await AuthAPI.login(request);
 		setLoggedIn(response);
+		props.handleClose();
+		window.location.assign("/");
 	};
 
 	const handleDoctorLogin = async (request: LoginRequest) => {
 		let response = await AuthAPI.doctorLogin(request);
 		setLoggedIn(response);
+		props.handleClose();
+		window.location.assign("/");
 	};
 
 	useEffect(() => {

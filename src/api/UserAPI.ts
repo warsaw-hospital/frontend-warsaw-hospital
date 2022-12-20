@@ -5,15 +5,11 @@ import UserRequest from "models/user/UserRequest";
 
 const baseUrl = apiEndpoints.user;
 const baseAdminUrl = apiEndpoints.userAdmin;
+axios.defaults.withCredentials = true;
 
 const UserAPI = {
 	//User endpoints
-	getUserInfo: (): Promise<UserInfo> =>
-		axios.get(`${baseUrl}/me`, {
-			headers: {
-				"Access-Control-Allow-Origin": "*",
-			},
-		}),
+	getUserInfo: (): Promise<UserInfo> => axios.get(`${baseUrl}/me`),
 	changeUserInfo: (request: UserRequest): Promise<UserInfo> =>
 		axios.put(`${baseUrl}/change/info`, request),
 

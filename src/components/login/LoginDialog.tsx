@@ -52,7 +52,7 @@ const LoginDialog = (props: LoginDialogProps) => {
 						padding: "24px",
 					}}
 				>
-					<LoginThroughPasswordForm isDoctorLogin={props.isDoctorLogin} />
+					<LoginThroughPasswordForm isDoctorLogin={props.isDoctorLogin} handleClose={props.handleClose} />
 				</div>
 				<div
 					style={{

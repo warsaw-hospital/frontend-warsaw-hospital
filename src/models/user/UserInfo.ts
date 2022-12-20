@@ -7,7 +7,7 @@ interface UserInfo {
 	phoneNumber: string;
 	address: string;
 	roles: UserRoleResponse[];
-	isLoggedIn: boolean;
+	loggedIn: boolean;
 }
 
 export default UserInfo;

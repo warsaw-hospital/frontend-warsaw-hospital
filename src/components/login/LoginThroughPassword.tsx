@@ -3,7 +3,7 @@ import "./LoginDialogStyle.css";
 import LoginThroughPasswordForm from "./LoginThroughPasswordForm";
 
 interface Props {
-	goToPasswordRemind: () => void;
+handleClose: () => void;
 }
 
 function LoginThroughPassword(props: Props) {
@@ -12,7 +12,9 @@ function LoginThroughPassword(props: Props) {
 			<Typography variant="h2" className="login-title">
 				Prisijungti per
 			</Typography>
-			<LoginThroughPasswordForm />
+			<LoginThroughPasswordForm
+			handleClose={props.handleClose}
+			/>
 		</div>
 	);
 }

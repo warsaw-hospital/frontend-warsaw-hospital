@@ -22,13 +22,11 @@ import ExpandMoreTwoToneIcon from "@mui/icons-material/ExpandMoreTwoTone";
 import InboxTwoToneIcon from "@mui/icons-material/InboxTwoTone";
 import LockOpenTwoToneIcon from "@mui/icons-material/LockOpenTwoTone";
 import { styled } from "@mui/material/styles";
+import AuthAPI from "api/AuthAPI";
+import { useAppSelector } from "redux/store/hooks";
 
 function HeaderUserbox() {
-	const user = {
-		name: "Vardenis Pavardenis",
-		avatar: undefined,
-		jobtitle: "Logged in as patient",
-	};
+	const user = useAppSelector((state) => state.common.me);
 
 	const ref = useRef<any>(null);
 	const [isOpen, setOpen] = useState<boolean>(false);
@@ -41,15 +39,27 @@ function HeaderUserbox() {
 		setOpen(false);
 	};
 
+	const logout = async () => {
+		await AuthAPI.logout();
+		window.location.reload();
+	};
+
 	return (
 		<>
 			<UserBoxButton color="secondary" ref={ref} onClick={handleOpen}>
-				<Avatar variant="rounded" alt={user.name} src={user.avatar} />
+				<Avatar variant="rounded" alt={user?.name} src={undefined} />
 				<Hidden mdDown>
 					<UserBoxText>
-						<UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
-						<UserBoxDescription variant="body2">
-							{user.jobtitle}
+						<UserBoxLabel variant="body1">
+							{user?.name} {user?.lastname}
+						</UserBoxLabel>
+						<UserBoxDescription
+							variant="body2"
+							style={{
+								wordBreak: "break-all",
+							}}
+						>
+							{user?.email}
 						</UserBoxDescription>
 					</UserBoxText>
 				</Hidden>
@@ -73,14 +83,14 @@ function HeaderUserbox() {
 				<MenuUserBox sx={{ minWidth: 210 }} display="flex">
 					<Avatar
 						variant="rounded"
-						alt={user.name}
-						src={user.avatar}
+						alt={user?.name}
+						src={undefined}
 						sx={{ mr: 1 }}
 					/>
 					<UserBoxText>
-						<UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
+						<UserBoxLabel variant="body1">{user?.name}</UserBoxLabel>
 						<UserBoxDescription variant="body2">
-							{user.jobtitle}
+							{user?.email}
 						</UserBoxDescription>
 					</UserBoxText>
 				</MenuUserBox>
@@ -102,7 +112,7 @@ function HeaderUserbox() {
 				</List>
 				<Divider />
 				<Box sx={{ m: 1 }}>
-					<Button color="primary" fullWidth>
+					<Button color="primary" fullWidth onClick={logout}>
 						<LockOpenTwoToneIcon sx={{ mr: 1 }} />
 						Sign out
 					</Button>
@@ -144,6 +154,8 @@ const UserBoxLabel = styled(Typography)(
 const UserBoxDescription = styled(Typography)(
 	({ theme }) => `
         color: ${lighten(theme.palette.secondary.main, 0.5)}
+		word-break: break-all;
+		width: fit-content;
 `
 );
 export default HeaderUserbox;
